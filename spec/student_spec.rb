@@ -19,8 +19,23 @@ RSpec.describe Student do
     it "can log scores" do
       @student.log_score(89)
       @student.log_score(78)
-      
+
       expect(@student.scores).to eq [89, 78]
+    end
+  end
+
+  describe "#grade" do
+    it "can return a mean average of all scores" do
+      expect(@student.grade).to eq 0.0
+
+      @student.log_score(89)
+      @student.log_score(78)
+
+      expect(@student.grade).to eq 83.5
+
+      @student.log_score(80)
+
+      expect(@student.grade).to eq 82.3
     end
   end
 
