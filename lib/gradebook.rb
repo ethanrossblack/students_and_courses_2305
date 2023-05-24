@@ -12,4 +12,14 @@ class Gradebook
     @courses << course
   end
 
+  def list_all_students
+    hash = {}
+
+    @courses.each do |course|
+      hash[course] = course.students
+    end
+
+    hash
+  end
+
 end
