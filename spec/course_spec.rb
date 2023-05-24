@@ -39,6 +39,14 @@ RSpec.describe Course do
 
       expect(@course.students).to eq [@morgan, @jordan]
     end
+
+    it "can only enroll a Student object" do
+      string = "I am a string, not a student"
+
+      @course.enroll(string)
+
+      expect(@course.students).to eq []
+    end
   end
 
   describe "#full?" do

@@ -8,6 +8,7 @@ class Course
   end
 
   def enroll(student)
+    return nil if !student.is_a?(Student)
     return nil if full?
 
     @students << student
