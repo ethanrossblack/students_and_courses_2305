@@ -101,4 +101,31 @@ RSpec.describe Gradebook do
     end
   end
 
+  describe "#students_below" do
+    before do
+      @gradebook.add_course(@calculus)
+      @gradebook.add_course(@philosophy)
+    end
+
+    it "returns an array of Student objects" do
+      students_below = @gradebook.students_below(90)
+
+      expect(students_below).to be_a Array
+      expect(students_below.first).to be_a Student
+    end
+    
+    it "only returns students whose grade average is below the provided threshold" do
+      students_below = @gradebook.students_below(90)
+
+      expect(students_below).to eq [@newton, @plato, @aristotle]
+    end
+    
+    it "returns an empty array if no students meet the provided threshold" do
+      students_below = @gradebook.students_below(50)
+
+      expect(students_below).to eq []
+    end
+
+  end
+
 end

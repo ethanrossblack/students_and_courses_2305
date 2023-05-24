@@ -22,4 +22,14 @@ class Gradebook
     hash
   end
 
+  def students_below(threshold)
+    students = @courses.map do |course|
+      course.students.map do |student|
+        student if student.grade < threshold
+      end
+    end
+
+    students.flatten.compact
+  end
+
 end
