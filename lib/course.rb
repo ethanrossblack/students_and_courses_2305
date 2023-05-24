@@ -8,7 +8,7 @@ class Course
   end
 
   def enroll(student)
-    return nil if @students.length == capacity
+    return nil if full?
 
     @students << student
   end
