@@ -19,5 +19,25 @@ RSpec.describe Course do
     end
   end
 
-  
+  describe "#enroll" do
+    it "can enroll a student in a course" do
+      @course.enroll(@morgan)
+      @course.enroll(@jordan)
+
+      expect(@course.students).to eq [@morgan, @jordan]
+    end
+
+    it "cannot enroll more students in a course after reaching capacity" do
+      ethan = Student.new({name: "Ethan", age: 28})
+
+      @course.enroll(@morgan)
+      @course.enroll(@jordan)
+
+      expect(@course.students).to eq [@morgan, @jordan]
+
+      @course.enroll(ethan)
+
+      expect(@course.students).to eq [@morgan, @jordan]
+    end
+  end
 end

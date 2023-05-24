@@ -7,4 +7,9 @@ class Course
     @students = []
   end
 
+  def enroll(student)
+    return nil if @students.length == capacity
+
+    @students << student
+  end
 end
