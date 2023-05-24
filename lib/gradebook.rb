@@ -6,4 +6,10 @@ class Gradebook
     @courses = []
   end
 
+  def add_course(course)
+    return nil if !course.is_a?(Course)
+
+    @courses << course
+  end
+
 end

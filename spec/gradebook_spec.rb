@@ -12,8 +12,8 @@ RSpec.describe Gradebook do
     @philosophy = Course.new("Philosophy", 3)
 
     # Calculus Students
-    @newton = Student.new({name: "Isaac Newton", age: 381})
     @turing = Student.new({name: "Alan Turing", age: 110})
+    @newton = Student.new({name: "Isaac Newton", age: 381})
 
     # Philosophy Students
     @plato = Student.new({name: "Plato", age: 2451})
@@ -29,6 +29,20 @@ RSpec.describe Gradebook do
     end
   end
 
-  
+  describe "#add_course" do
+    it "can add a course" do
+      @gradebook.add_course(@calculus)
+
+      expect(@gradebook.courses).to eq [@calculus]
+
+      expect(@gradebook.add_course(@philosophy)).to eq [@calculus, @philosophy]
+    end
+
+    it "can only add Course objects" do
+      @gradebook.add_course(@turing)
+
+      expect(@gradebook.courses).to eq []
+    end
+  end
 
 end
