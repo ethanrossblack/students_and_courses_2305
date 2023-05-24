@@ -40,4 +40,18 @@ RSpec.describe Course do
       expect(@course.students).to eq [@morgan, @jordan]
     end
   end
+
+  describe "#full?" do
+    it "can return a boolean if a course has reached its capacity" do
+      expect(@course.full?).to be false
+      
+      @course.enroll(@morgan)
+      
+      expect(@course.full?).to be false
+      
+      @course.enroll(@jordan)
+
+      expect(@course.full?).to be true
+    end
+  end
 end

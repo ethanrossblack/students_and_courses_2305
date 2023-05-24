@@ -12,4 +12,8 @@ class Course
 
     @students << student
   end
+
+  def full?
+    @students.length == capacity
+  end
 end
